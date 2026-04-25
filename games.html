@@ -41,8 +41,8 @@ nav{width:210px;min-width:210px;background:var(--card);border-right:1px solid va
 .ctrl-card{background:linear-gradient(145deg,#14142A,#0F0F22);border:1px solid rgba(123,104,238,0.12);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 12px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.04);}
 .ctrl-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
 /* BET INPUT */
-.bet-row{display:flex;gap:6px;align-items:center}
-.bet-input{flex:1;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--txt);font-family:'Exo 2',sans-serif;font-size:15px;font-weight:600;outline:none;min-width:0}
+.bet-row{display:flex;gap:6px;align-items:center;width:100%;}
+.bet-input{flex:1;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--txt);font-family:'Exo 2',sans-serif;font-size:15px;font-weight:600;outline:none;min-width:90px;width:100%;}
 .bet-input:focus{border-color:var(--purple)}
 .bet-btn{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--purpleL);font-weight:700;cursor:pointer;font-size:12px;transition:all 0.15s}
 .bet-btn:hover{background:var(--purpleD);color:var(--txt)}
@@ -67,7 +67,7 @@ input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(to r
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-3px);box-shadow:0 8px 28px rgba(255,215,0,0.55);}
 .action-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important;filter:none!important;box-shadow:none!important;}
 /* Bet buttons upgrade */
-.bet-btn{background:linear-gradient(135deg,var(--card2),rgba(60,50,110,0.5));border:1px solid rgba(123,104,238,0.25);border-radius:7px;padding:6px 11px;color:var(--purpleL);font-weight:800;cursor:pointer;font-size:12px;transition:all 0.15s;letter-spacing:0.5px;}
+.bet-btn{background:linear-gradient(135deg,var(--card2),rgba(60,50,110,0.5));border:1px solid rgba(123,104,238,0.25);border-radius:7px;padding:6px 11px;color:var(--purpleL);font-weight:800;cursor:pointer;font-size:12px;transition:all 0.15s;letter-spacing:0.5px;flex-shrink:0;white-space:nowrap;}
 .bet-btn:hover{background:linear-gradient(135deg,var(--purpleD),rgba(80,70,150,0.8));border-color:rgba(123,104,238,0.6);color:#fff;transform:translateY(-1px);box-shadow:0 3px 10px rgba(123,104,238,0.3);}
 .max-btn{background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(200,120,0,0.2))!important;border-color:rgba(255,215,0,0.35)!important;color:var(--gold)!important;}
 .max-btn:hover{background:linear-gradient(135deg,rgba(255,215,0,0.3),rgba(200,120,0,0.35))!important;border-color:rgba(255,215,0,0.65)!important;box-shadow:0 3px 12px rgba(255,215,0,0.25)!important;}
@@ -1022,7 +1022,7 @@ select.styled:focus{border-color:var(--purple)}
 
   /* ── Bet row ── */
   .bet-row { flex-wrap: wrap; }
-  .bet-input { min-width: 80px; }
+  .bet-input { min-width: 90px; }
 
   /* ── Mines grid ── */
   #minesGrid { max-width: 100%; gap: 5px; }
@@ -2854,7 +2854,7 @@ function playMoneyCashout() {
 // ============================================================
 // GLOBALS
 // ============================================================
-let balance = 10000;
+let balance = 0;
 
 function fmtNum(n) {
   return Math.floor(n).toLocaleString();
@@ -6963,7 +6963,8 @@ function launchCBConfetti(parent){const cols=['#FFD700','#9B8FFF','#00E5FF','#FF
 
 
 // ── Init ──────────────────────────────────────────────────────
-tryAutoLogin();
+// Must run after full DOM is parsed (authOverlay lives after </script>)
+window.addEventListener('DOMContentLoaded', tryAutoLogin);
 
 // ============================================================
 // ADMIN CASE MANAGER
