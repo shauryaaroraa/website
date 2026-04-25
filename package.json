@@ -1,0 +1,21 @@
+{
+  "name": "casino-backend",
+  "version": "1.0.0",
+  "description": "Crypto casino backend with real wallet integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --experimental-sqlite server.js",
+    "dev": "node --experimental-sqlite --watch server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "@solana/web3.js": "^1.95.2",
+    "@solana/spl-token": "^0.4.8"
+  }
+}
