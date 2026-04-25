@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Crypto casino backend with real wallet integration",
   "main": "server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
     "start": "node --experimental-sqlite server.js",
     "dev": "node --experimental-sqlite --watch server.js"
