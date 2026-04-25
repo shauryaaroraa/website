@@ -6963,7 +6963,7 @@ function launchCBConfetti(parent){const cols=['#FFD700','#9B8FFF','#00E5FF','#FF
 
 
 // ── Init ──────────────────────────────────────────────────────
-// Must run after full DOM is parsed (authOverlay lives after </script>)
+// Must run after full DOM is parsed (authOverlay is defined after the script block)
 window.addEventListener('DOMContentLoaded', tryAutoLogin);
 
 // ============================================================
